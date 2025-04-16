@@ -1,0 +1,57 @@
+[project]
+name = "sigsum-tools-wrapper"
+version = "0.1.0"
+description = "Python wrapper for Sigsum command line tools"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["sarge>=0.1.7.post1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+  "coverage>=7.8.0",
+  "devtools>=0.12.2",
+  "pytest>=8.3.5",
+  "pytest-cov>=6.1.1",
+]
+fmt = ["ruff>=0.11.5", "ssort>=0.14.0", "taplo>=0.9.3"]
+lint = [
+  "mypy>=1.15.0",
+  "nox>=2025.2.9",                   # so mypy can check the noxfile
+  "validate-pyproject[all]>=0.24.1",
+]
+
+[tool.hatch.build.targets.sdist]
+artifacts = ["__source-date-epoch.txt"]
+
+[tool.mypy]
+# https://justincaustin.com/blog/mypy-tips-and-tricks
+# TODO: Enable more of these.
+# disallow_any_generics = true
+# disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+# disallow_untyped_defs = true
+# follow_imports = 'normal'
+# ignore_missing_imports = true
+no_implicit_reexport = true
+show_error_codes = true
+show_error_context = true
+strict_equality = true
+strict_optional = true
+warn_redundant_casts = true
+# warn_return_any = true
+warn_unused_ignores = true
+
+# [tool.portray.mkdocs.theme]
+# name = "material"
+# palette = {primary = "deep purple", accent = "pink"}
+
+# [tool.portray.mkdocs]
+# markdown_extensions = [
+# "pymdownx.superfences",
+# #"pymdownx.highlight"
+# ]
